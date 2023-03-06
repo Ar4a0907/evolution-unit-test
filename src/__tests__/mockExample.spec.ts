@@ -1,19 +1,21 @@
 // You are expected to mock formatNumberAsCurrency function with jest.fn()
-jest.mock('../stringExample', () => {
+const formatNumberAsCurrency = jest.fn().mockImplementation(() => {
+    return 'some number'
+});
+
+jest.mock('../02_stringExample', () => {
     return {
-        formatNumberAsCurrency: jest.fn().mockImplementation(() => {
-            return 'some number'
-        })
+        formatNumberAsCurrency: formatNumberAsCurrency
     }
 })
 
-import { listOfAvailableLocaleCurrencies } from '../mockExample'
+import { listOfAvailableLocaleCurrencies } from '../05_mockExample'
 
 describe("listOfAvailableLocaleCurrencies", () => {
     it('should return correct string', () => {
-        expect(listOfAvailableLocaleCurrencies()).toEqual()
-
-        expect(formatNumberAsCurrency).toHaveBeenCalledTimes()
-        expect(formatNumberAsCurrency).toHaveBeenCalledWith()
+        expect(listOfAvailableLocaleCurrencies()).toEqual(["some number", "some number"])
+        expect(formatNumberAsCurrency).toHaveBeenCalledTimes(2)
+        expect(formatNumberAsCurrency).toHaveBeenCalledWith(1000, 'us')
+        expect(formatNumberAsCurrency).toHaveBeenCalledWith(1000, 'de')
     })
 })

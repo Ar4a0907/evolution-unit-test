@@ -9,8 +9,8 @@ describe("formatNumberAsCurrency", () => {
     })
     
     test('formatNumberAsCurrency returns correct string with us locale', () => {
-        const usFormat = formatNumberAsCurrency(1000, 'us')
-        expect(usFormat).toBe('1\u00A0000')
+        const usFormat = formatNumberAsCurrency(1000, 'en-US')
+        expect(usFormat).toContain('1,000')
         expect.assertions(1)
     })
 

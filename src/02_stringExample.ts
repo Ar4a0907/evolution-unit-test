@@ -1,4 +1,4 @@
-type Locale = 'en-US' | 'de' | 'fr';
+type Locale = 'en-US' | 'de' | 'fr' | 'us';
 
 export function formatNumberAsCurrency(n: number, locale: Locale = 'en-US'): string {
     if(locale === 'fr') return 'fr locale is currently not supported'
